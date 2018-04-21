@@ -14,3 +14,4 @@ https://wiki.odroid.com/accessory/add-on_boards/xu4_cloudshell2/data_recovery#ho
 ### Todo
 
 * Check re: failure statuses - did I bungle the output by overriding a varible there? 
+* Have it display if rclone (rclone.org) is syncing remote data to cloudshell
