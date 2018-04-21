@@ -21,15 +21,6 @@ export CONSOLE_FONT="Lat7-Fixed13"
 #export CONSOLE_FONT="Lat15-Terminus12x6"
 #export CONSOLE_FONT="Lat15-Terminus14"
 
-# Check for rclone put.io sync
-RESULT=`ps -A | sed -n /rclone/p`
-if [ "${RESULT:-null}" = null ]; then
-    RCLONE_STATUS=""
-else
-    RCLONE_STATUS="   Syncing Put.io    "
-fi
-
-
 # Output Console (ttyX)
 export OUTPUT_CONSOLE="1"
 
@@ -203,6 +194,14 @@ chvt $OUTPUT_CONSOLE
 
 # infinite loop
 while true; do
+
+   # Check for rclone put.io sync
+   RESULT=`ps -A | sed -n /rclone/p`
+   if [ "${RESULT:-null}" = null ]; then
+       RCLONE_STATUS=""
+   else
+       RCLONE_STATUS="   Syncing Put.io    "
+   fi
 
    # Ensure that we are in the right TTY
    chvt $OUTPUT_CONSOLE
