@@ -70,8 +70,10 @@ get_ethernet_speed() {
 
 get_net_tx_rx_realtime() {
    local net_txrx=($(sar -n DEV 1 1 | awk '$2 == "'$NETIF'" {printf "%.1f %.1f", $5/1024, $6/1024; exit;}'))
-   export NET_TX=${net_txrx[0]}
-   export NET_RX=${net_txrx[1]}
+#   export NET_TX=${net_txrx[0]}
+#   export NET_RX=${net_txrx[1]}
+   export NET_TX=${net_txrx[1]}  # These appear to be the wrong way around for my cloudshell? Have reversed them.
+   export NET_RX=${net_txrx[0]}
 }
 
 get_disk_mount_info() {
